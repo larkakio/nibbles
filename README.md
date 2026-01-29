@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Deploy (Vercel)
 
 1. Push to GitHub and import the repo in [Vercel](https://vercel.com).
-2. Set env vars: `NEXT_PUBLIC_APP_URL` = your deployment URL (e.g. `https://nibbles.vercel.app`).
+2. Set env vars: `NEXT_PUBLIC_APP_URL` = your deployment URL (e.g. `https://nibbles-gamma.vercel.app`).
 3. Turn off **Deployment Protection** (Settings → Deployment Protection) so the manifest is publicly reachable.
 4. Get **Account Association** from [Base Build](https://www.base.dev/preview?tab=account): paste your app URL, verify, copy the `accountAssociation` object.
 5. Add to Vercel env: `FARCASTER_ACCOUNT_HEADER`, `FARCASTER_ACCOUNT_PAYLOAD`, `FARCASTER_ACCOUNT_SIGNATURE` (from the copied object).

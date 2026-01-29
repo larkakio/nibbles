@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://nibbles.example.com';
+const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://nibbles-gamma.vercel.app';
 
 export async function GET() {
   const manifest = {

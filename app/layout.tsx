@@ -12,7 +12,7 @@ const jetbrains = JetBrains_Mono({
   variable: '--font-jetbrains',
 });
 
-const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://nibbles.example.com';
+const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://nibbles-gamma.vercel.app';
 
 const FC_EMBED = {
   version: '1',
