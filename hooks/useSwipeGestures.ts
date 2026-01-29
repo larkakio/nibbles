@@ -32,7 +32,7 @@ export function useSwipeGestures({ onSwipe }: SwipeHandlers) {
       const absY = Math.abs(dy);
       if (absX < MIN_SWIPE_DISTANCE && absY < MIN_SWIPE_DISTANCE) return;
 
-      if (absX > absY) {
+      if (absX >= absY) {
         onSwipe(dx > 0 ? 'RIGHT' : 'LEFT');
       } else {
         onSwipe(dy > 0 ? 'DOWN' : 'UP');

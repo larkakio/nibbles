@@ -6,7 +6,7 @@ import { useSwipeGestures } from '@/hooks/useSwipeGestures';
 import type { Direction } from '@/types/game';
 
 export function Controls() {
-  const { setDirection, gameState, pause, resume } = useGame();
+  const { setDirection, gameState } = useGame();
 
   const onSwipe = useCallback(
     (direction: Direction) => {
@@ -17,26 +17,25 @@ export function Controls() {
 
   const { handleTouchStart, handleTouchEnd } = useSwipeGestures({ onSwipe });
 
-  const handleTap = useCallback(() => {
-    if (gameState === 'PLAYING') pause();
-    else if (gameState === 'PAUSED') resume();
-  }, [gameState, pause, resume]);
+  const prevent = useCallback((e: React.TouchEvent) => {
+    e.preventDefault();
+  }, []);
 
   return (
     <div
-      className="touch-none select-none"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-      onClick={handleTap}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === ' ') {
-          e.preventDefault();
-          handleTap();
-        }
+      className="touch-none select-none w-full h-full"
+      style={{ touchAction: 'none' }}
+      onTouchStart={(e) => {
+        handleTouchStart(e);
+        prevent(e);
       }}
-      aria-label="Game controls: tap to pause, swipe to move"
+      onTouchEnd={(e) => {
+        handleTouchEnd(e);
+        prevent(e);
+      }}
+      onTouchMove={prevent}
+      role="presentation"
+      aria-label="Swipe to change direction"
     />
   );
 }

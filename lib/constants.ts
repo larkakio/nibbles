@@ -12,4 +12,4 @@ export const INITIAL_SNAKE: { x: number; y: number }[] = [
 ];
 export const INITIAL_DIRECTION = 'RIGHT' as const;
 export const TOUCH_DEADZONE_PX = 20;
-export const MIN_SWIPE_DISTANCE = 30;
+export const MIN_SWIPE_DISTANCE = 24;

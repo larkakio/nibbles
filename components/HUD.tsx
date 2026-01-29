@@ -1,6 +1,7 @@
 'use client';
 
 import { useGame } from '@/context/GameContext';
+import { PauseButton } from '@/components/PauseButton';
 
 export function HUD() {
   const { score, level, highScore, gameState } = useGame();
@@ -14,8 +15,11 @@ export function HUD() {
       <div className="text-cyber-purple">
         Level: <span className="font-bold">{level}</span>
       </div>
-      <div className="text-white/80">
-        Best: <span className="text-neon-green font-bold">{highScore}</span>
+      <div className="flex items-center gap-2">
+        <span className="text-white/80">
+          Best: <span className="text-neon-green font-bold">{highScore}</span>
+        </span>
+        <PauseButton />
       </div>
     </div>
   );
