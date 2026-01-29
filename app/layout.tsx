@@ -34,10 +34,10 @@ export const metadata: Metadata = {
   description:
     'Navigate the neon grid in this futuristic remake of the classic QBasic Nibbles game. Eat numbers, grow your snake, avoid walls!',
   openGraph: {
-    title: 'Nibbles – Classic Snake, Reimagined',
+    title: 'Nibbles – Classic Snake',
     description:
-      'Navigate the neon grid in this futuristic remake of the classic QBasic Nibbles game. Eat numbers, grow your snake, avoid walls!',
-    images: [`${ROOT_URL}/hero-image.png`],
+      'Futuristic remake of the classic Nibbles game. Eat numbers, grow your snake, avoid walls!',
+    images: [{ url: `${ROOT_URL}/hero-image.png`, width: 1200, height: 630 }],
     url: ROOT_URL,
   },
   other: {
