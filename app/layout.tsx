@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Orbitron, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import { Providers } from './providers';
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -14,21 +15,6 @@ const jetbrains = JetBrains_Mono({
 
 const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://nibbles-gamma.vercel.app';
 
-const FC_EMBED = {
-  version: '1',
-  imageUrl: `${ROOT_URL}/hero-image.png`,
-  button: {
-    title: 'Play Nibbles',
-    action: {
-      type: 'launch_frame',
-      name: 'Nibbles',
-      url: `${ROOT_URL}/`,
-      splashImageUrl: `${ROOT_URL}/hero-image.png`,
-      splashBackgroundColor: '#0a0a0f',
-    },
-  },
-};
-
 export const metadata: Metadata = {
   title: 'Nibbles – Classic Snake, Reimagined',
   description:
@@ -41,8 +27,6 @@ export const metadata: Metadata = {
     url: ROOT_URL,
   },
   other: {
-    'fc:miniapp': JSON.stringify(FC_EMBED),
-    'fc:frame': JSON.stringify(FC_EMBED),
     'base:app_id': process.env.NEXT_PUBLIC_BASE_APP_ID || '697b6753748a9bde7c61abcd',
   },
 };
@@ -55,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${orbitron.variable} ${jetbrains.variable}`}>
       <body className="font-[family-name:var(--font-orbitron)] antialiased bg-space-black text-white min-h-screen">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

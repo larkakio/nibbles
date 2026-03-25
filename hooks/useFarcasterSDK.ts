@@ -1,26 +1,28 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-
-interface FarcasterUser {
-  username?: string;
-  displayName?: string;
-}
+import { useAccount } from "wagmi";
 
 export function useFarcasterSDK() {
-  const [sdk, setSDK] = useState<{ context: Promise<{ user?: FarcasterUser }>; actions?: { openUrl: (url: string) => Promise<void> } } | null>(null);
-  const [user, setUser] = useState<FarcasterUser | null>(null);
+  const { address } = useAccount();
 
-  useEffect(() => {
-    import('@farcaster/miniapp-sdk')
-      .then((m) => {
-        setSDK(m.sdk as unknown as typeof sdk);
-        m.sdk.context
-          .then((ctx: { user?: FarcasterUser }) => setUser(ctx?.user ?? null))
-          .catch(() => {});
-      })
-      .catch(() => {});
-  }, []);
+  const user = address
+    ? {
+        fid: 0,
+        username: undefined as string | undefined,
+        displayName: `${address.slice(0, 6)}…${address.slice(-4)}`,
+        pfpUrl: undefined as string | undefined,
+      }
+    : null;
 
-  return { sdk, user };
+  const openUrl = (url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const sdk = {
+    actions: {
+      openUrl,
+    },
+  };
+
+  return { user, openUrl, sdk };
 }
