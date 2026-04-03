@@ -10,7 +10,7 @@ export function ShareButton() {
 
   const handleShare = useCallback(() => {
     if (sdk?.actions?.openUrl) {
-      sdk.actions.openUrl(SHARE_URL).catch(() => {
+      Promise.resolve(sdk.actions.openUrl(SHARE_URL)).catch(() => {
         if (typeof window !== 'undefined' && window.navigator?.share) {
           window.navigator.share({ url: SHARE_URL, title: 'Nibbles' }).catch(() => {});
         }
