@@ -34,3 +34,7 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+
+# foundry
+contracts/out
+contracts/cache
